@@ -1,13 +1,13 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import Dashboard from './Pages/Dashboard';
-import Users from './Pages/Users';
-import Account from './Pages/Account';
-import Cabins from './Pages/Cabins';
-import Setting from './Pages/Settings';
-import Bookings from './Pages/Bookings';
-import Login from './Pages/Login';
-import PageNotFound from './Pages/PageNotFound';
-import AppLayout from './Layout/AppLayout';
+import Dashboard from './pages/Dashboard';
+import Users from './pages/Users';
+import Account from './pages/Account';
+import Cabins from './pages/Cabins';
+import Setting from './pages/Settings';
+import Bookings from './pages/Bookings';
+import Login from './pages/Login';
+import PageNotFound from './pages/PageNotFound';
+import AppLayout from './layout/AppLayout';
 
 function App() {
   return (
