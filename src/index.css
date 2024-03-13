@@ -36,7 +36,8 @@
 
 .active {
   @apply bg-grey-100;
-  svg {
-    @apply text-brand-600;
-  }
+}
+
+.active svg {
+  @apply text-brand-600;
 }
