@@ -1,3 +1,5 @@
-export default function App() {
-  return <div>App</div>;
+function App() {
+  return <div>Tailwind is Amazing!!</div>;
 }
+
+export default App;

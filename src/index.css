@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  button {
+    @apply cursor-pointer;
+  }
+
+  *:disabled {
+    @apply cursor-not-allowed;
+  }
+
+  select:disabled,
+  input:disabled {
+    @apply bg-grey-200 text-grey-500;
+  }
+
+  input:focus,
+  button:focus,
+  textarea:focus,
+  select:focus {
+    @apply outline-2 outline-brand-600 -outline-offset-1;
+  }
+
+  button:has(svg) {
+    @apply leading-[0];
+  }
+}
