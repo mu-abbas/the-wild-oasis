@@ -1,4 +1,4 @@
-import Nav from '../component/Nav';
+import Nav from '../components/Nav';
 
 function Sidebar() {
   return (
