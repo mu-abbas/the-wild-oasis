@@ -50,7 +50,11 @@ export default {
       /* Backdrop */
       backdrop: 'rgba(255, 255, 255, 0.1)',
     },
-    extend: {},
+    extend: {
+      height: {
+        screen: '100dvh',
+      },
+    },
   },
   plugins: [],
 };

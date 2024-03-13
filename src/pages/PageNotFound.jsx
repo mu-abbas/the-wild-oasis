@@ -1,5 +1,5 @@
 function PageNotFound() {
-  return <div>Page not found: TODO</div>;
+  return <div>Error 404 - Page Not Found: TODO</div>;
 }
 
 export default PageNotFound;

@@ -27,3 +27,7 @@
     @apply leading-[0];
   }
 }
+
+.active {
+  @apply bg-grey-100 text-brand-700;
+}
