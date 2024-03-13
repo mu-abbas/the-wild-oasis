@@ -28,6 +28,15 @@
   }
 }
 
+@layer components {
+  .nav-item {
+    @apply text-lg font-medium px-6 py-4 hover:bg-grey-100 rounded-md duration-300 transition text-grey-600 flex gap-6 items-center;
+  }
+}
+
 .active {
-  @apply bg-grey-100 text-brand-700;
+  @apply bg-grey-100;
+  svg {
+    @apply text-brand-600;
+  }
 }
