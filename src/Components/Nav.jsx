@@ -35,7 +35,7 @@ function Nav() {
         </NavLink>
       </li>
       <li>
-        <NavLink className="nav-item" to="setting">
+        <NavLink className="nav-item" to="settings">
           <HiOutlineCog6Tooth size="36" />
           <span>Settings</span>
         </NavLink>

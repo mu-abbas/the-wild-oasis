@@ -1,13 +1,13 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import AppLayout from './layout/AppLayout';
 import Dashboard from './pages/Dashboard';
-import Users from './pages/Users';
 import Account from './pages/Account';
+import Users from './pages/Users';
 import Cabins from './pages/Cabins';
-import Setting from './pages/Settings';
+import Settings from './pages/Settings';
 import Bookings from './pages/Bookings';
 import Login from './pages/Login';
 import PageNotFound from './pages/PageNotFound';
-import AppLayout from './layout/AppLayout';
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
           <Route path="account" element={<Account />} />
           <Route path="users" element={<Users />} />
           <Route path="cabins" element={<Cabins />} />
-          <Route path="setting" element={<Setting />} />
+          <Route path="settings" element={<Settings />} />
           <Route path="bookings" element={<Bookings />} />
         </Route>
         <Route path="login" element={<Login />} />
