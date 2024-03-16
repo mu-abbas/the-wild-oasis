@@ -5,13 +5,13 @@ function TableRow({ item }) {
 
   return (
     <figure
-      className="grid grid-cols-[0.5fr_1fr_1fr_1fr_1fr_1fr] py-1 items-center font-medium bg-grey-0 gap-4"
+      className="grid grid-cols-[0.5fr_0.5fr_1fr_1fr_1fr_1fr] py-1 place-content-center font-medium bg-grey-0 gap-4 place-items-center"
       role="row"
     >
       <img src={image} alt="cabin" className="w-20" />
       <span role="cell">{name}</span>
       <span role="cell" className="font-normal tracking-tighter">
-        Fits upto {maxCapacity} guests.
+        {maxCapacity} Guests
       </span>
       <span role="cell">{currencyFormat(regularPrice)}</span>
       <span role="cell" className="text-green-700">
