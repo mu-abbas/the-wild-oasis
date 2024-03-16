@@ -9,7 +9,7 @@ import {
 
 function Nav() {
   return (
-    <ul className="space-y-4">
+    <ul className="space-y-2">
       <li>
         <NavLink className="nav-item" to="dashboard">
           <HiOutlineHome size="36" />

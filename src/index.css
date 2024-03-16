@@ -30,7 +30,34 @@
 
 @layer components {
   .nav-item {
-    @apply text-lg font-medium px-6 py-4 hover:bg-grey-100 rounded-md duration-300 transition text-grey-600 flex gap-6 items-center;
+    @apply text-lg font-medium px-5 py-3 hover:bg-grey-100 rounded-md duration-300 transition text-grey-600 flex gap-6 items-center;
+  }
+  .loader {
+    width: 50px;
+    aspect-ratio: 1;
+    display: grid;
+    border: 4px solid #0000;
+    border-radius: 50%;
+    border-right-color: theme(colors.brand-600);
+    animation: l15 1s infinite linear;
+  }
+  .loader::before,
+  .loader::after {
+    content: '';
+    grid-area: 1/1;
+    margin: 2px;
+    border: inherit;
+    border-radius: 50%;
+    animation: l15 2s infinite;
+  }
+  .loader::after {
+    margin: 8px;
+    animation-duration: 3s;
+  }
+  @keyframes l15 {
+    100% {
+      transform: rotate(1turn);
+    }
   }
 }
 

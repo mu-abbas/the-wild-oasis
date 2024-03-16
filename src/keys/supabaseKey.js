@@ -1,0 +1,4 @@
+const KEY =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxzamNtYWp5cHRlbWliaWZ3aHlvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTA0MzIyMzksImV4cCI6MjAyNjAwODIzOX0.60gBQpsK8xZ2q6LHTUsax5NXwrWuB-QkDO-joDljBYk';
+
+export default KEY;
