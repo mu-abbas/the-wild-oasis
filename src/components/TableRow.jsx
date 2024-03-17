@@ -7,14 +7,14 @@ function TableRow({ item }) {
   const { id, name, image, regularPrice, maxCapacity, discount } = item;
   const queryClient = useQueryClient();
   const { isPending, mutate } = useMutation({
-    mutationFn: id => deleteCabin(id),
+    mutationFn: deleteCabin,
     onSuccess: () => {
       toast.success('Successfully deleted');
       queryClient.invalidateQueries({
         queryKey: ['cabins'],
       });
     },
-    onError: () => toast.error(`Cabin can't be deleted!`),
+    onError: error => toast.error(error.message),
   });
 
   return (
