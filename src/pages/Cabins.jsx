@@ -7,7 +7,7 @@ function Cabins() {
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   return (
-    <div className="container relative h-full mx-auto overflow-scroll no-scrollbar">
+    <div className="container relative min-h-full mx-auto">
       <p>Cabins: TODO</p>
       <CabinsTable />
       {isFormOpen && <CabinForm setIsFormOpen={setIsFormOpen} />}

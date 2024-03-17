@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 import CabinInput from './CabinInput';
 
 function CabinForm({ setIsFormOpen }) {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState, getValues } = useForm();
   const queryClient = useQueryClient();
   const { isPending, mutate } = useMutation({
     mutationFn: createCabin,
@@ -18,39 +18,81 @@ function CabinForm({ setIsFormOpen }) {
     },
     onError: error => toast.error(error.message),
   });
+  const { errors } = formState;
+  console.log(errors);
   return (
     <form
       className="flex flex-col px-20 py-8 mt-8 divide-y rounded-md px-112 bg-grey-0 divide-grey-100"
       onSubmit={handleSubmit(data => mutate(data))}
     >
-      <CabinInput type="text" name="name" register={register}>
+      <CabinInput
+        type="text"
+        name="name"
+        register={register('name', {
+          required: 'This field is rquired!',
+        })}
+        error={errors?.name?.message}
+      >
         Cabin Name
       </CabinInput>
 
-      <CabinInput type="number" name="maxCapacity" register={register}>
+      <CabinInput
+        type="number"
+        name="maxCapacity"
+        register={register('maxCapacity', {
+          required: 'This field is rquired!',
+          min: {
+            value: 1,
+            message: 'The maximum capacity should be at least 1!',
+          },
+        })}
+        error={errors?.maxCapacity?.message}
+      >
         Max Capacity
       </CabinInput>
 
-      <CabinInput type="number" name="regularPrice" register={register}>
+      <CabinInput
+        type="number"
+        name="regularPrice"
+        register={register('regularPrice', {
+          required: 'This field is rquired!',
+          min: {
+            value: 100,
+            message: `The price shouldn't be less than 100!`,
+          },
+        })}
+        error={errors?.regularPrice?.message}
+      >
         Regular Price
       </CabinInput>
 
-      <CabinInput type="number" name="discount" register={register}>
+      <CabinInput
+        type="number"
+        name="discount"
+        register={register('discount', {
+          required: 'This field is rquired!',
+          validate: value => value < getValues().regularPrice,
+        })}
+        error={errors?.discount?.message || (errors?.discount && 'Discount should be less than the regular price!')}
+      >
         Discount
       </CabinInput>
 
-      <label className="flex items-center py-4">
-        <span className="font-semibold uppercase basis-1/3">Description</span>
+      <label className="flex items-center gap-4 py-4">
+        <span className="font-medium basis-1/3">Description</span>
         <textarea
           name="description"
-          className="px-4 py-2 border-2 rounded-md border-grey-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-grey-200"
-          {...register('description')}
+          className="w-1/5 h-32 px-4 py-2 border-2 rounded-md resize-none border-grey-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-grey-200"
+          {...register('description', {
+            required: 'This field is required!',
+          })}
         />
+        {errors?.description && <p className="text-red-700 ">{errors?.description?.message}</p>}
       </label>
 
-      <CabinInput type="file" name="image" register={register}>
+      {/* <CabinInput type="file" name="image" register={register} accept="image/*">
         Image
-      </CabinInput>
+      </CabinInput> */}
 
       <div className="flex justify-end gap-4 pt-8">
         <button
