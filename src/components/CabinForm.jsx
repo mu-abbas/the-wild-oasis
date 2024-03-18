@@ -19,11 +19,10 @@ function CabinForm({ setIsFormOpen }) {
     onError: error => toast.error(error.message),
   });
   const { errors } = formState;
-  console.log(errors);
   return (
     <form
       className="flex flex-col px-20 py-8 mt-8 divide-y rounded-md px-112 bg-grey-0 divide-grey-100"
-      onSubmit={handleSubmit(data => mutate(data))}
+      onSubmit={handleSubmit(data => mutate({ ...data, image: data.image[0] }))}
     >
       <CabinInput
         type="text"
@@ -32,6 +31,7 @@ function CabinForm({ setIsFormOpen }) {
           required: 'This field is rquired!',
         })}
         error={errors?.name?.message}
+        disabled={isPending}
       >
         Cabin Name
       </CabinInput>
@@ -47,6 +47,7 @@ function CabinForm({ setIsFormOpen }) {
           },
         })}
         error={errors?.maxCapacity?.message}
+        disabled={isPending}
       >
         Max Capacity
       </CabinInput>
@@ -62,6 +63,7 @@ function CabinForm({ setIsFormOpen }) {
           },
         })}
         error={errors?.regularPrice?.message}
+        disabled={isPending}
       >
         Regular Price
       </CabinInput>
@@ -74,6 +76,7 @@ function CabinForm({ setIsFormOpen }) {
           validate: value => value < getValues().regularPrice,
         })}
         error={errors?.discount?.message || (errors?.discount && 'Discount should be less than the regular price!')}
+        disabled={isPending}
       >
         Discount
       </CabinInput>
@@ -86,27 +89,36 @@ function CabinForm({ setIsFormOpen }) {
           {...register('description', {
             required: 'This field is required!',
           })}
+          disabled={isPending}
         />
         {errors?.description && <p className="text-red-700 ">{errors?.description?.message}</p>}
       </label>
 
-      {/* <CabinInput type="file" name="image" register={register} accept="image/*">
+      <CabinInput
+        type="file"
+        name="image"
+        register={register('image', {
+          required: 'This field is rquired!',
+        })}
+        accept="image/*"
+        disabled={isPending}
+      >
         Image
-      </CabinInput> */}
+      </CabinInput>
 
       <div className="flex justify-end gap-4 pt-8">
         <button
           type="reset"
-          className="px-6 py-3 uppercase border rounded-md text-brand-600 bg-grey-0 min-w-32 border-brand-600"
+          className="px-6 py-3 uppercase transition duration-300 border rounded-md text-brand-600 bg-grey-0 min-w-32 border-brand-600 active:scale-[0.98] hover:bg-brand-50"
         >
           Clear
         </button>
         <button
           type="submit"
-          className="px-6 py-3 uppercase rounded-md bg-brand-600 text-grey-0 min-w-32"
+          className="px-6 py-3 uppercase rounded-md hover:opacity-90 active:scale-[0.98] bg-brand-600 text-grey-0 min-w-32 transition duration-300"
           disabled={isPending}
         >
-          Create
+          {isPending ? 'Wait...' : 'Create'}
         </button>
       </div>
     </form>
