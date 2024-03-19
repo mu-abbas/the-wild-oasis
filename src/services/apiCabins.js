@@ -23,14 +23,15 @@ export async function createCabin(cabin) {
   const { data, error } = await supabase
     .from('cabins')
     .insert([{ ...cabin, image: imagePath }])
-    .select();
+    .select()
+    .single();
   if (error) {
     throw new Error(`${error.code}: ${error.message}`);
   }
 
   const { error: uploadError } = await supabase.storage.from('cabinsImages').upload(imageName, cabin.image);
   if (uploadError) {
-    deleteCabin(data[0].id);
+    deleteCabin(data.id);
     throw new Error(`${uploadError.code}: ${uploadError.message}`);
   }
 
