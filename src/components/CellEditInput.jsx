@@ -2,9 +2,9 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { updateCabin } from '../services/apiCabins';
 import toast from 'react-hot-toast';
 
-function CellEditInput({ item, setIsEditable, type, name }) {
+function CellEditInput({ item, setIsEditable, type, name, disabled, setIsSubmitting }) {
   const queryClient = useQueryClient();
-  const { isPending, mutate } = useMutation({
+  const { mutate } = useMutation({
     mutationFn: updateCabin,
     onSuccess: () => {
       toast.success('Successfully edited');
@@ -20,6 +20,7 @@ function CellEditInput({ item, setIsEditable, type, name }) {
     if (!e.code || e.code === 'Enter') {
       const value = e.target.value;
       const name = e.target.name;
+      setIsSubmitting(true);
       mutate({ ...item, [name]: value });
     }
   }
@@ -27,7 +28,7 @@ function CellEditInput({ item, setIsEditable, type, name }) {
     <input
       onBlur={handleSubmit}
       onKeyDown={handleSubmit}
-      disabled={isPending}
+      disabled={disabled}
       type={type}
       name={name}
       className="w-1/2 p-1 text-center border rounded-md border-grey-200 focus:outline-none"
