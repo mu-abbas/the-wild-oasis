@@ -89,7 +89,6 @@ function CabinForm({ setIsFormOpen }) {
           {...register('description', {
             required: 'This field is required!',
           })}
-          disabled={isPending}
         />
         {errors?.description && <p className="text-red-700 ">{errors?.description?.message}</p>}
       </label>
@@ -101,7 +100,6 @@ function CabinForm({ setIsFormOpen }) {
           required: 'This field is rquired!',
         })}
         accept="image/*"
-        disabled={isPending}
       >
         Image
       </CabinInput>

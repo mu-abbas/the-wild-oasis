@@ -1,7 +1,7 @@
 import supabase from './supabase';
 
 export async function getCabins() {
-  const { data, error } = await supabase.from('cabins').select('*');
+  const { data, error } = await supabase.from('cabins').select('*').order('created_at', { ascending: true });
   if (error) {
     throw new Error(`${error.code}: ${error.message}`);
   }
@@ -36,4 +36,16 @@ export async function createCabin(cabin) {
   }
 
   return;
+}
+
+export async function updateCabin(updatedCabin) {
+  const { error } = await supabase
+    .from('cabins')
+    .update({ ...updatedCabin })
+    .eq('id', updatedCabin.id)
+    .select();
+  if (error) {
+    console.log(error);
+    throw new Error(`${error.code}: ${error.message}`);
+  }
 }
