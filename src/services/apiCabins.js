@@ -38,11 +38,11 @@ export async function createCabin(cabin) {
   return;
 }
 
-export async function updateCabin(updatedCabin) {
+export async function updateCabin({ id, name, value }) {
   const { error } = await supabase
     .from('cabins')
-    .update({ ...updatedCabin })
-    .eq('id', updatedCabin.id)
+    .update({ [name]: value })
+    .eq('id', id)
     .select();
   if (error) {
     throw new Error(`${error.code}: ${error.message}`);

@@ -9,7 +9,6 @@ import CellEditInput from './CellEditInput';
 function TableRow({ item }) {
   const { id, name, image, regularPrice, maxCapacity, discount } = item;
   const [isEditable, setIsEditable] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const queryClient = useQueryClient();
   const { isPending, mutate } = useMutation({
     mutationFn: deleteCabin,
@@ -30,14 +29,7 @@ function TableRow({ item }) {
       <img src={image} alt="cabin" className="w-20" />
 
       {isEditable ? (
-        <CellEditInput
-          name="name"
-          item={item}
-          setIsEditable={setIsEditable}
-          type="text"
-          setIsSubmitting={setIsSubmitting}
-          disabled={isSubmitting}
-        />
+        <CellEditInput name="name" id={id} defaultValue={name} setIsEditable={setIsEditable} type="text" />
       ) : (
         <span role="cell" className="py-4">
           {name}
@@ -47,11 +39,10 @@ function TableRow({ item }) {
       {isEditable ? (
         <CellEditInput
           name="maxCapacity"
-          item={item}
+          id={id}
+          defaultValue={maxCapacity}
           setIsEditable={setIsEditable}
           type="number"
-          setIsSubmitting={setIsSubmitting}
-          disabled={isSubmitting}
         />
       ) : (
         <span role="cell" className="py-4 font-normal tracking-tighter">
@@ -62,11 +53,10 @@ function TableRow({ item }) {
       {isEditable ? (
         <CellEditInput
           name="regularPrice"
-          item={item}
+          id={id}
+          defaultValue={regularPrice}
           setIsEditable={setIsEditable}
           type="number"
-          setIsSubmitting={setIsSubmitting}
-          disabled={isSubmitting}
         />
       ) : (
         <span role="cell" className="py-4">
@@ -75,14 +65,7 @@ function TableRow({ item }) {
       )}
 
       {isEditable ? (
-        <CellEditInput
-          name="discount"
-          item={item}
-          setIsEditable={setIsEditable}
-          type="number"
-          setIsSubmitting={setIsSubmitting}
-          disabled={isSubmitting}
-        />
+        <CellEditInput name="discount" id={id} defaultValue={discount} setIsEditable={setIsEditable} type="number" />
       ) : (
         <span role="cell" className="py-4 text-green-700">
           {currencyFormat(discount)}
