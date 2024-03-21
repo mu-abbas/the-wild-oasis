@@ -16,14 +16,12 @@ function SettingsConfig() {
   if (error) return <Error error={error.message} />;
 
   return (
-    <div className="rounded-md bg-grey-0">
-      <form className="px-12 py-4">
-        <SettingInput label="Minimum nights/booking" defaultValue={minBookingLength} name="minBookingLength" />
-        <SettingInput label="Maximum nights/booking" defaultValue={maxBookingLength} name="maxBookingLength" />
-        <SettingInput label="Minimum guests/booking" defaultValue={maxGuestsPerBooking} name="maxGuestsPerBooking" />
-        <SettingInput label="Breakfast Price" defaultValue={breakfastPrice} name="breakfastPrice" />
-      </form>
-    </div>
+    <fieldset className="px-12 py-4 rounded-md bg-grey-0">
+      <SettingInput label="Minimum nights/booking" defaultValue={minBookingLength} name="minBookingLength" />
+      <SettingInput label="Maximum nights/booking" defaultValue={maxBookingLength} name="maxBookingLength" />
+      <SettingInput label="Minimum guests/booking" defaultValue={maxGuestsPerBooking} name="maxGuestsPerBooking" />
+      <SettingInput label="Breakfast Price" defaultValue={breakfastPrice} name="breakfastPrice" />
+    </fieldset>
   );
 }
 

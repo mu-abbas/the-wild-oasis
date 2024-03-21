@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import CabinsTable from '../components/CabinsTable';
-import CircleButton from '../utils/CircleButton';
+import CircleButton from '../components/CircleButton';
 import CabinForm from '../components/CabinForm';
 
 function Cabins() {
