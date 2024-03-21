@@ -18,10 +18,10 @@ function SettingsConfig() {
   return (
     <div className="rounded-md bg-grey-0">
       <form className="px-12 py-4">
-        <SettingInput label="Minimum nights/booking" defaultValue={minBookingLength} />
-        <SettingInput label="Maximum nights/booking" defaultValue={maxBookingLength} />
-        <SettingInput label="Minimum guests/booking" defaultValue={maxGuestsPerBooking} />
-        <SettingInput label="Breakfast Price" defaultValue={breakfastPrice} />
+        <SettingInput label="Minimum nights/booking" defaultValue={minBookingLength} name="minBookingLength" />
+        <SettingInput label="Maximum nights/booking" defaultValue={maxBookingLength} name="maxBookingLength" />
+        <SettingInput label="Minimum guests/booking" defaultValue={maxGuestsPerBooking} name="maxGuestsPerBooking" />
+        <SettingInput label="Breakfast Price" defaultValue={breakfastPrice} name="breakfastPrice" />
       </form>
     </div>
   );

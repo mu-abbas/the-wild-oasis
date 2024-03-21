@@ -45,7 +45,6 @@ export async function updateCabin(updatedCabin) {
     .eq('id', updatedCabin.id)
     .select();
   if (error) {
-    console.log(error);
     throw new Error(`${error.code}: ${error.message}`);
   }
 }

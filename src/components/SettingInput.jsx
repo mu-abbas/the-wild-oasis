@@ -1,4 +1,28 @@
-function SettingInput({ label, handleSubmit, disabled, name, defaultValue }) {
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { setSettings } from '../services/apiSettings';
+import toast from 'react-hot-toast';
+
+function SettingInput({ label, name, defaultValue }) {
+  const queryClient = useQueryClient();
+  const { isPending, mutate } = useMutation({
+    mutationFn: setSettings,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['settings'],
+      });
+      toast.success('Successfully Edited');
+    },
+    onError: error => toast.error(error.message),
+  });
+
+  function handleSubmit(e) {
+    if (!e.code || e.code === 'Enter') {
+      const value = e.target.value;
+      const name = e.target.name;
+      mutate({ name, value });
+    }
+  }
+
   return (
     <label className="flex items-center gap-4 py-4">
       <span className="font-medium basis-1/3">{label}</span>
@@ -7,7 +31,7 @@ function SettingInput({ label, handleSubmit, disabled, name, defaultValue }) {
         type="number"
         onBlur={handleSubmit}
         onKeyDown={handleSubmit}
-        disabled={disabled}
+        disabled={isPending}
         name={name}
         defaultValue={defaultValue}
         required
