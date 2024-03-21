@@ -7,14 +7,17 @@ function Cabins() {
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   return (
-    <div className="container relative min-h-full mx-auto">
-      <p>Cabins: TODO</p>
+    <section className="container relative min-h-full mx-auto">
+      <header className="flex items-center justify-between px-4 pb-8">
+        <h1 className="text-3xl font-semibold">All Cabins</h1>
+        <p>Sort - Filter</p>
+      </header>
       <CabinsTable />
       {isFormOpen && <CabinForm setIsFormOpen={setIsFormOpen} />}
       <CircleButton onClick={() => setIsFormOpen(true)} isOpen={isFormOpen}>
         +
       </CircleButton>
-    </div>
+    </section>
   );
 }
 

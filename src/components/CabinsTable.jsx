@@ -17,7 +17,7 @@ function CabinsTable() {
   return (
     <>
       {data.length > 0 && (
-        <section
+        <div
           role="table"
           aria-label="Semantic Elements"
           aria-describedby="semantic_elements_table_desc"
@@ -29,7 +29,7 @@ function CabinsTable() {
           {data.map(item => (
             <TableRow item={item} key={item.id} />
           ))}
-        </section>
+        </div>
       )}
     </>
   );
