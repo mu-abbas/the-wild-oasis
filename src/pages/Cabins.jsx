@@ -1,10 +1,10 @@
-import { useState } from 'react';
 import CabinsTable from '../components/CabinsTable';
 import CircleButton from '../components/CircleButton';
 import CabinForm from '../components/CabinForm';
+import Modal from '../components/Modal';
 
 function Cabins() {
-  const [isFormOpen, setIsFormOpen] = useState(false);
+  // const [isFormOpen, setIsFormOpen] = useState(false);
 
   return (
     <section className="container relative min-h-full mx-auto">
@@ -13,10 +13,18 @@ function Cabins() {
         <p>Sort - Filter</p>
       </header>
       <CabinsTable />
-      {isFormOpen && <CabinForm setIsFormOpen={setIsFormOpen} />}
+      <Modal>
+        <Modal.Open name="cabinForm">
+          <CircleButton>+</CircleButton>
+        </Modal.Open>
+        <Modal.Window name="cabinForm">
+          <CabinForm />
+        </Modal.Window>
+      </Modal>
+      {/* {isFormOpen && <CabinForm setIsFormOpen={setIsFormOpen} />}
       <CircleButton onClick={() => setIsFormOpen(true)} isOpen={isFormOpen}>
         +
-      </CircleButton>
+      </CircleButton> */}
     </section>
   );
 }

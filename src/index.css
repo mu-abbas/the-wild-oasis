@@ -80,3 +80,7 @@
 .active svg {
   @apply text-brand-600;
 }
+
+.icon svg {
+  @apply text-grey-700;
+}

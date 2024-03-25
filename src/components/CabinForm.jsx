@@ -4,7 +4,7 @@ import { createCabin } from '../services/apiCabins';
 import toast from 'react-hot-toast';
 import CabinInput from './CabinInput';
 
-function CabinForm({ setIsFormOpen }) {
+function CabinForm({ close }) {
   const { register, handleSubmit, formState, getValues } = useForm();
   const queryClient = useQueryClient();
   const { isPending, mutate } = useMutation({
@@ -14,7 +14,7 @@ function CabinForm({ setIsFormOpen }) {
         queryKey: ['cabins'],
       });
       toast.success('Successfully added');
-      setIsFormOpen(false);
+      close();
     },
     onError: error => toast.error(error.message),
   });

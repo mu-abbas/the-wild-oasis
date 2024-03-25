@@ -54,6 +54,15 @@ export default {
       height: {
         screen: '100dvh',
       },
+      keyframes: {
+        bubble: {
+          '0%': { transform: 'scale(0)' },
+          '100%': { transform: 'scale(1)' },
+        },
+      },
+      animation: {
+        bubble: 'bubble 0.5s ease-in-out',
+      },
     },
   },
   plugins: [],
