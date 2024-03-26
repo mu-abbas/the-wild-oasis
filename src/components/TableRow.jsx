@@ -5,6 +5,8 @@ import toast from 'react-hot-toast';
 import { useState } from 'react';
 import { HiPencil, HiTrash } from 'react-icons/hi2';
 import CellEditInput from './CellEditInput';
+import Modal from './Modal';
+import DeleteModal from './DeleteModal';
 
 function TableRow({ item }) {
   const { id, name, image, regularPrice, maxCapacity, discount } = item;
@@ -73,13 +75,17 @@ function TableRow({ item }) {
       )}
 
       <div className="flex space-x-2">
-        <button
-          className="text-sm border max-w-min py-0.5 px-4 capitalize rounded-sm bg-grey-100 border-grey-300 hover:bg-grey-50 active:bg-grey-200 active:scale-[0.995] duration-300 transition hover:shadow-sm active:shadow-none disabled:cursor-not-allowed disabled:bg-grey-200"
-          disabled={isPending}
-          onClick={() => mutate(id)}
-        >
-          <HiTrash />
-        </button>
+        <Modal>
+          <Modal.Open name="deleteCabin">
+            <button className="text-sm border max-w-min py-0.5 px-4 capitalize rounded-sm bg-grey-100 border-grey-300 hover:bg-grey-50 active:bg-grey-200 active:scale-[0.995] duration-300 transition hover:shadow-sm active:shadow-none disabled:cursor-not-allowed disabled:bg-grey-200">
+              <HiTrash />
+            </button>
+          </Modal.Open>
+          <Modal.Window name="deleteCabin">
+            <DeleteModal onClick={() => mutate(id)} disabled={isPending} />
+          </Modal.Window>
+        </Modal>
+
         <button
           className="text-sm border max-w-min py-0.5 px-4 capitalize rounded-sm bg-grey-100 border-grey-300 hover:bg-grey-50 active:bg-grey-200 active:scale-[0.995] duration-300 transition hover:shadow-sm active:shadow-none disabled:cursor-not-allowed disabled:bg-grey-200"
           disabled={isPending}

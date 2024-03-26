@@ -17,14 +17,10 @@ function Cabins() {
         <Modal.Open name="cabinForm">
           <CircleButton>+</CircleButton>
         </Modal.Open>
-        <Modal.Window name="cabinForm">
+        <Modal.Window name="cabinForm" closeBtn={true}>
           <CabinForm />
         </Modal.Window>
       </Modal>
-      {/* {isFormOpen && <CabinForm setIsFormOpen={setIsFormOpen} />}
-      <CircleButton onClick={() => setIsFormOpen(true)} isOpen={isFormOpen}>
-        +
-      </CircleButton> */}
     </section>
   );
 }

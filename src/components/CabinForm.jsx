@@ -21,7 +21,7 @@ function CabinForm({ close }) {
   const { errors } = formState;
   return (
     <form
-      className="flex flex-col px-20 py-8 mt-8 divide-y rounded-md px-112 bg-grey-0 divide-grey-100"
+      className="flex flex-col px-16 py-8 divide-y bg-grey-0 divide-grey-100"
       onSubmit={handleSubmit(data => mutate({ ...data, image: data.image[0] }))}
     >
       <CabinInput
@@ -85,7 +85,7 @@ function CabinForm({ close }) {
         <span className="font-medium basis-1/3">Description</span>
         <textarea
           name="description"
-          className="w-1/5 h-32 px-4 py-2 border-2 rounded-md resize-none border-grey-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-grey-200"
+          className="w-1/4 h-32 px-4 py-2 border-2 rounded-md resize-none border-grey-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-grey-200"
           {...register('description', {
             required: 'This field is required!',
           })}
@@ -100,6 +100,7 @@ function CabinForm({ close }) {
           required: 'This field is rquired!',
         })}
         accept="image/*"
+        error={errors?.name?.message}
       >
         Image
       </CabinInput>
