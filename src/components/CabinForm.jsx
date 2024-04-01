@@ -21,7 +21,7 @@ function CabinForm({ close }) {
   const { errors } = formState;
   return (
     <form
-      className="flex flex-col px-16 py-8 divide-y bg-grey-0 divide-grey-100"
+      className="flex flex-col px-16 py-8 divide-y bg-grey-0 divide-grey-100 w-[960px] rounded-md border border-grey-100"
       onSubmit={handleSubmit(data => mutate({ ...data, image: data.image[0] }))}
     >
       <CabinInput

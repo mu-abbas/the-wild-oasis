@@ -1,10 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import { getCabins } from '../services/apiCabins';
-import TableRow from './TableRow';
+import CabinTableRow from './CabinTableRow';
 import Spinner from './Spinner';
 import Error from './Error';
 import TableHeader from './TableHeader';
 import { useSearchParams } from 'react-router-dom';
+import Table from './Table';
 
 function CabinsTable() {
   const { data, isLoading, error } = useQuery({
@@ -32,16 +33,20 @@ function CabinsTable() {
   if (error) return <Error error={error.message} />;
 
   return (
-    <div
-      role="table"
-      aria-label="Semantic Elements"
-      aria-describedby="semantic_elements_table_desc"
-      className="font-mono border divide-y border-grey-200 divide-grey-200 text-grey-600"
-    >
-      <TableHeader />
-      {sortedData.length > 0 && sortedData.map(item => <TableRow item={item} key={item.id} />)}
+    <Table>
+      <TableHeader cols={'grid-cols-[0.5fr_0.5fr_1fr_1fr_1fr_1fr]'}>
+        <span role="columnheader">image</span>
+        <span role="columnheader">cabin</span>
+        <span role="columnheader">capacity</span>
+        <span role="columnheader">price</span>
+        <span role="columnheader">discount</span>
+        <span role="columnheader" className="mx-2">
+          actions
+        </span>
+      </TableHeader>
+      {sortedData.length > 0 && sortedData.map(item => <CabinTableRow item={item} key={item.id} />)}
       {!sortedData.length && <p className="p-4 text-center bg-grey-0">No available data to be shown!</p>}
-    </div>
+    </Table>
   );
 }
 

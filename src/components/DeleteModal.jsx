@@ -1,6 +1,6 @@
 function DeleteModal({ close, onClick, disabled }) {
   return (
-    <div className="flex items-center justify-center w-full h-full">
+    <div className="flex items-center justify-center border rounded-lg border-grey-100">
       <div className="p-8 mx-auto my-auto space-y-4 rounded-lg bg-grey-0">
         <div className="space-y-2">
           <p>This item will be deleted permanently.</p>

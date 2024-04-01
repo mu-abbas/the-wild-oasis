@@ -1,9 +1,9 @@
 import supabase from './supabase';
 
 export async function getCabins() {
-  const { data, error } = await supabase.from('cabins').select('*').order('created_at', { ascending: true });
+  const { data, error } = await supabase.from('cabins').select('*').order('name');
   if (error) {
-    throw new Error(`${error.code}: ${error.message}`);
+    throw new Error(`${error.message}`);
   }
   return data;
 }
@@ -11,7 +11,7 @@ export async function getCabins() {
 export async function deleteCabin(id) {
   const { error } = await supabase.from('cabins').delete().eq('id', id);
   if (error) {
-    throw new Error(`${error.code}: ${error.message}`);
+    throw new Error(`${error.message}`);
   }
   return;
 }
@@ -26,7 +26,7 @@ export async function createCabin(cabin) {
     .select()
     .single();
   if (error) {
-    throw new Error(`${error.code}: ${error.message}`);
+    throw new Error(`${error.message}`);
   }
 
   const { error: uploadError } = await supabase.storage.from('cabinsImages').upload(imageName, cabin.image);
@@ -45,6 +45,6 @@ export async function updateCabin({ id, name, value }) {
     .eq('id', id)
     .select();
   if (error) {
-    throw new Error(`${error.code}: ${error.message}`);
+    throw new Error(`${error.message}`);
   }
 }

@@ -8,7 +8,7 @@ import Sorter from '../components/Sorter';
 function Cabins() {
   return (
     <section className="container relative min-h-full mx-auto">
-      <header className="flex items-center justify-between gap-4 px-4 pb-8">
+      <header className="flex items-center justify-between gap-4 pb-8">
         <h1 className="mr-auto text-3xl font-semibold">All Cabins</h1>
         <Filter
           field="discount"
@@ -34,9 +34,9 @@ function Cabins() {
       <CabinsTable />
       <Modal>
         <Modal.Open name="cabinForm">
-          <CircleButton>+</CircleButton>
+          <CircleButton>Create new cabin</CircleButton>
         </Modal.Open>
-        <Modal.Window name="cabinForm" closeBtn={true}>
+        <Modal.Window name="cabinForm">
           <CabinForm />
         </Modal.Window>
       </Modal>
