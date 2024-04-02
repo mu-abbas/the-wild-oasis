@@ -8,23 +8,20 @@ function Bookings() {
       <header className="flex items-center justify-between gap-4 pb-8">
         <h1 className="mr-auto text-3xl font-semibold">All Bookings</h1>
         <Filter
-          field="discount"
+          field="status"
           options={[
             { value: 'all', label: 'All' },
-            { value: 'discount', label: 'With discount' },
-            { value: 'no-discount', label: 'No discount' },
+            { value: 'checked-in', label: 'Checked-In' },
+            { value: 'checked-out', label: 'Checked-Out' },
+            { value: 'unconfirmed', label: 'Unconfirmed' },
           ]}
         />
         <Sorter
           options={[
-            { value: 'name-asc', label: 'Sort by name (A-Z)' },
-            { value: 'name-des', label: 'Sort by name (Z-A)' },
-            { value: 'maxCapacity-asc', label: 'Sort by capacity (Low)' },
-            { value: 'maxCapacity-des', label: 'Sort by capacity (High)' },
-            { value: 'regularPrice-asc', label: 'Sort by price (Low)' },
-            { value: 'regularPrice-des', label: 'Sort by price (High)' },
-            { value: 'discount-asc', label: 'Sort by discount (Low)' },
-            { value: 'discount-des', label: 'Sort by discount (High)' },
+            { value: 'startDate-des', label: 'Sort by date (Recent)' },
+            { value: 'startDate-asc', label: 'Sort by date (Earlier)' },
+            { value: 'totalPrice-asc', label: 'Sort by amount (Low)' },
+            { value: 'totalPrice-des', label: 'Sort by amount (High)' },
           ]}
         />
       </header>
