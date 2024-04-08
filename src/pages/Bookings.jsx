@@ -5,7 +5,7 @@ import Sorter from '../components/Sorter';
 function Bookings() {
   return (
     <section className="container relative min-h-full mx-auto">
-      <header className="flex items-center justify-between gap-4 pb-8">
+      <header className="flex flex-wrap items-center justify-between gap-4 pb-8">
         <h1 className="mr-auto text-3xl font-semibold">All Bookings</h1>
         <Filter
           field="status"
